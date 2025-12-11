@@ -1,18 +1,7 @@
-
-#include "ft_printf.h"
-
-int	ft_putstr(char *s)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-	{
-		return (ft_putstr("(null)"));
-	}
-	while (s[i])
-	{
-		ft_putchar(s[i]);
+int 	ft_putstr(char* str){
+	int i = 0;
+	while (str[i]){
+		write(1, &str[i], 1);
 		i++;
 	}
 	return (i);

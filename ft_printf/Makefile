@@ -1,6 +1,6 @@
 NAME = libftprintf.a
 
-SRCS =  ft_printf.c ft_put_u.c ft_put_x.c ft_put_upper_x.c ft_put_p.c ft_putchar.c ft_putnbr.c ft_putstr.c
+SRCS =  ft_printf.c ft_put_u.c ft_put_x.c ft_put_p.c ft_putchar.c ft_putnbr.c ft_putstr.c
 
 CFLAGS = -Wall -Wextra -Werror
 
