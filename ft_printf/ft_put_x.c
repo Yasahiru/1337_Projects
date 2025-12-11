@@ -27,8 +27,8 @@ int	ft_put_X(unsigned int n)
 	hex = "0123456789ABCDEF";
 	if (n >= 16)
 	{
-		count += ft_put_upper_x(n / 16);
-		count += ft_put_upper_x(n % 16);
+		count += ft_put_X(n / 16);
+		count += ft_put_X(n % 16);
 	}
 	else
 		count += ft_putchar(hex[n]);
