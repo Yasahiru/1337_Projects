@@ -1,3 +1,5 @@
+#include "ft_printf.h"
+
 int 	ft_putstr(char* str){
 	int i = 0;
 	while (str[i]){

@@ -24,7 +24,8 @@ static int format_check (char c, va_list list)
 	return (count);
 }
 
-int ft_printf(char* format, ...){
+int ft_printf(char* format, ...)
+{
 	int (total),(i) ;
 	va_list(args);
 
