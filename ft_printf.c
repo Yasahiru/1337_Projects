@@ -24,12 +24,13 @@ static int format_check (char c, va_list list)
 	return (count);
 }
 
-int ft_printf(char* format, ...)
+int ft_printf(const char* format, ...)
 {
-	int (total),(i) ;
+	int (total),(i);
 	va_list(args);
 
-	(total), (i) = 0;
+	total = 0;
+	i = 0;
 	va_start(args, format);
 	while (format[i])
 	{
@@ -38,20 +39,9 @@ int ft_printf(char* format, ...)
 			i++;
 			total += format_check(format[i], args);
 		}
-		else 
+		else
 			total += ft_putchar(format[i]);
 		i++;
 	}
 	return (total);
-}
-
-
-
-int main(){
-	//int summ = sum(5,1,2,3,4,5);
-	//printf("%d",summ);
-	char str1[] = "hamza";
-	// char str2[] = "devoam202";
-	int total = ft_printf("%c %d %s",'c',344,str1);
-	printf("total: %d",total);
 }

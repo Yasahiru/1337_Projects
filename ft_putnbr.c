@@ -9,7 +9,7 @@ int	ft_putnbr(int n)
 	count = 0;
 	if (nb < 0)
 	{
-		ft_putchar('-');
+		count += ft_putchar('-');
 		nb = -nb;
 	}
 	if (nb >= 10)
