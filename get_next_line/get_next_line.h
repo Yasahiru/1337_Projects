@@ -11,5 +11,12 @@
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+#include <fcntl.h> 
+#include <sys/stat.h> 
 
 char *get_next_line(int fd);
+
+#define BUFFER_SIZE 42 
