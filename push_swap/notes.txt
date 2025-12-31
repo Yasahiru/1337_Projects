@@ -1,0 +1,8 @@
+Parsing:
+
+_ join the inputs in one string using strjoin by space
+_ split them back to an array
+_ check inputs if valid (only numbers, overflow check, no multiple +/-, not repeated)
+
+
+
