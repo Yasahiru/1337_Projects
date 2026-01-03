@@ -10,34 +10,26 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+NAME = push_swap
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g3 
 
-SRC = push_swap.c parser.c
+SRC = push_swap.c parser.c push_swap_utils.c push_swap_utils2.c push_swap_utils3.c push_swap_utils4.c push_swap_utils5.c
 
-OBJ = $(SRC:.c=.o)
-
-LIB = libft/libft.a
+OBJS = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.c libft.h
-	$(CC) $(CFLAGS) -c $< -o $@
+clean : 
+	rm -f $(OBJS) $(OBJS_BONUS)
 
-$(LIB):
-	make -C $(LIB)
+fclean : clean
+	rm -f $(NAME) $(NAME_BONUS)
 
-clean:
-	rm -f $(OBJ) $(BONUS_OBJ)
-
-fclean: clean
-	rm -f $(NAME)
-
-re: fclean all
+re : fclean all
 
 .PHONY: all clean bonus fclean re

@@ -9,7 +9,12 @@
 /*   Updated: 2025/10/19 00:10:04 by hloutman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include "push_swap.h"
+
+int	ft_isdigit(int c)
+{
+	return (c >= '0' && c <= '9');
+}
 
 static int	ft_is_overflow(long number, int digit, int sign, int *res)
 {
@@ -51,4 +56,33 @@ long	ft_atoi(const char *str)
 	if ((number * sign) >= -2147483648 || (number * sign) <= 2147483647)
 		return (number * sign);
 	return (21474836478);
+}
+
+size_t	ft_strlen(const char*str)
+{
+	size_t	i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	while (str && str[i])
+		i++;
+	return (i);
+}
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n && (s1[i] && s2[i]))
+	{
+		if (s1[i] == s2[i])
+			i++;
+		else
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	}
+	if (i == n)
+		return (0);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

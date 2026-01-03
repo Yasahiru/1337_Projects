@@ -9,7 +9,7 @@
 /*   Updated: 2025/10/20 01:40:18 by hloutman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include "push_swap.h"
 
 static int	ft_words(char const *str, char c)
 {

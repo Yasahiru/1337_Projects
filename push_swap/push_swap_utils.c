@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "push_swap.h"
 
 // void	show_arr(char**arr)
@@ -27,8 +26,6 @@
 
 void	show_arr(t_list *head)
 {
-	t_list	*next;
-
 	while (head)
 	{
 		printf("%d \n",head->value);
@@ -36,7 +33,7 @@ void	show_arr(t_list *head)
 	}
 }
 
-void creat_stack_a(char **arr)
+t_list *creat_stack_a(char **arr)
 {
 	t_list	*head;
 	t_list	*node;
@@ -52,7 +49,7 @@ void creat_stack_a(char **arr)
 		ft_lstadd_back(&head,node);
 		i++;
 	}
-	show_arr(head);
+	return (head);
 }
 
 int	is_number(char *str)
@@ -121,49 +118,10 @@ int	check_arr(char **arr)
 		if (!is_repeated(arr, arr[i]))
 			checker++;
 		if (checker > 0)
-			return (0);
+			return (write(2, "Error\n", 6), 0);
 		if ((!is_number(arr[i]) || !is_multiple_signs(arr[i])))
-			return (0);
+			return (write(2, "Error\n", 6), 0);
 		i++;
 	}
 	return (1);
 }
-
-// int	check_arr(char **arr)
-// {
-// 	int (i), (checker), (check1);
-// 	i = 0;
-// 	checker = 0;
-// 	check1 = 0;
-// 	while (arr[i] && check1 <= 0)
-// 	{
-// 		if (is_repeated(arr, arr[i]) == 99999999999)
-// 			checker++;
-// 		if ((!is_number(arr[i]) || !is_multiple_signs(arr[i])) && check1 < 2)
-// 		{
-// 			checker++;
-// 			break ;
-// 		}
-// 		i++;
-// 	}
-// 	if (checker > 0)
-// 		return (0);
-// 	return (1);
-// }
-
-// int	is_arr_valid(char **arr)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (arr[i])
-// 	{
-// 		if (!ft_atoi(arr[i]))
-// 			return (0);
-// 		i++;
-// 	}
-// 	return (1);
-// }
-
-// ft_strdup
-// ft_strlen

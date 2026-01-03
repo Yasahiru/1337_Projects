@@ -10,15 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "libft.h"
 #include "push_swap.h"
-
-// void ft_free(char *args, char **nums)
-// {
-// 	free(args);
-// 	free(nums);
-// }
 
 void	free_arr(char **arr)
 {
@@ -33,18 +25,28 @@ void	free_arr(char **arr)
 	free(arr);
 }
 
+void ft_free(t_list *lst)
+{
+    if (lst)
+    {
+        ft_free(lst->next);
+        free(lst);
+    }
+}
+
 int	main(int ac, char **av)
 {
 	int		i;
 	char	**numbers;
-	void	**head;
+	t_list	*head;
 
 	char *(joined_args), *(temp);
 	if (ac <= 1 || av[1][0] == '\0')
-		return (write(2, "Error", 5), 0);
+		return (write(2, "Error\n", 6), 0);
 	i = 1;
 	joined_args = NULL;
 	temp = NULL;
+	head = NULL;
 	while (i < ac)
 	{
 		temp = ft_strjoin(joined_args, av[i]);
@@ -56,8 +58,8 @@ int	main(int ac, char **av)
 	numbers = ft_split(joined_args, ' ');
 	free(joined_args);
 	if (check_arr(numbers))
-		creat_stack_a(numbers);
-	// printf("%d\n",check_arr(numbers));
+		head = creat_stack_a(numbers);
 	free_arr(numbers);
+	show_arr(head);
+	ft_free(head);
 }
-
