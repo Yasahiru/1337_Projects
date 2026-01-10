@@ -13,9 +13,9 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		(i), (j);
 	char	*str;
 
+	int (i), (j);
 	if (!s1 && !s2)
 		return (ft_strdup(""));
 	if (!s2)
@@ -66,18 +66,18 @@ char	*ft_strdup(const char *s)
 	return (newstr);
 }
 
-static void     ft_free(t_list *lst, void (*del)(int))
+static void	ft_free2(t_stack *lst, void (*del)(int))
 {
-        if (lst)
-        {
-                ft_free(lst->next, del);
-                del(lst->value);
-                free(lst);
-        }
+	if (lst)
+	{
+		ft_free2(lst->next, del);
+		del(lst->value);
+		free(lst);
+	}
 }
 
-void    ft_lstclear(t_list **lst, void (*del)(int))
+void	ft_lstclear(t_stack **lst, void (*del)(int))
 {
-        ft_free(*lst, del);
-        *lst = (NULL);
+	ft_free2(*lst, del);
+	*lst = (NULL);
 }

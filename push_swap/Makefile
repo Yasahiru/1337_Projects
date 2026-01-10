@@ -13,7 +13,7 @@
 NAME = push_swap
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g3 
+CFLAGS = -Wall -Wextra # -Werror -fsanitize=address -g3 
 
 SRC = push_swap.c parser.c push_swap_utils.c push_swap_utils2.c push_swap_utils3.c push_swap_utils4.c push_swap_utils5.c
 
@@ -32,4 +32,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY: all clean bonus fclean re
+.PHONY: all clean fclean re

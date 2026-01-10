@@ -11,11 +11,11 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-t_list	*ft_lstnew(int content)
+t_stack	*ft_lstnew(int content)
 {
-	t_list	*newlist;
+	t_stack	*newlist;
 
-	newlist = malloc(sizeof(t_list));
+	newlist = malloc(sizeof(t_stack));
 	if (!newlist)
 		return (NULL);
 	newlist->value = content;
@@ -23,7 +23,7 @@ t_list	*ft_lstnew(int content)
 	return (newlist);
 }
 
-t_list	*ft_lstlast(t_list *lst)
+t_stack	*ft_lstlast(t_stack *lst)
 {
 	if (!lst)
 		return (lst);
@@ -32,10 +32,9 @@ t_list	*ft_lstlast(t_list *lst)
 	return (lst);
 }
 
-
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_stack **lst, t_stack *new)
 {
-	t_list	*last;
+	t_stack	*last;
 
 	if (!new || !lst)
 		return ;
@@ -48,7 +47,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	}
 }
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_stack **lst, t_stack *new)
 {
 	if (!lst || !new)
 		return ;
@@ -56,7 +55,7 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 	*lst = new;
 }
 
-int	ft_lstsize(t_list *lst)
+int	ft_lstsize(t_stack *lst)
 {
 	if (!lst)
 		return (0);
@@ -64,3 +63,15 @@ int	ft_lstsize(t_list *lst)
 		return (1 + ft_lstsize(lst->next));
 	return (1);
 }
+
+// int main(){
+// 	t_stack *head = NULL;
+// 	int i = 1;
+// 	while (i < 4){
+// 		t_stack *node = ft_lstnew(i);
+// 		ft_lstadd_back(&head,node);
+// 		i++;
+// 	}
+// 	printf("size = %d", ft_lstsize(head));
+// 	// free();
+// }

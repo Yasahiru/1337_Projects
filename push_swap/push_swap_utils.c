@@ -12,58 +12,55 @@
 
 #include "push_swap.h"
 
-// void	show_arr(char**arr)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (arr[i])
-// 	{
-// 		printf("%s \n", arr[i]);
-// 		i++;
-// 	}
-// }
-
-void	show_arr(t_list *head)
+t_stack	*create_stack_a(char **arr)
 {
-	while (head)
-	{
-		printf("%d \n",head->value);
-		head = head->next;
-	}
-}
-
-t_list *creat_stack_a(char **arr)
-{
-	t_list	*head;
-	t_list	*node;
 	long	i;
 	int		number;
+	t_stack	*head;
+	t_stack	*node;
+	t_stack	*last_node;
 
 	i = 0;
 	head = NULL;
+	number = ft_atoi(arr[i]);
+	head = ft_lstnew(number);
+	head->previous = NULL;
+	head->index = i;
+	i++;
 	while (arr[i])
 	{
 		number = ft_atoi(arr[i]);
 		node = ft_lstnew(number);
-		ft_lstadd_back(&head,node);
-		i++;
+		last_node = ft_lstlast(head);
+		node->previous = last_node;
+		node->index = i++;
+		ft_lstadd_back(&head, node);
 	}
 	return (head);
 }
 
+// int main(){
+// 	char **arr = ft_split("1 2 3 4 5 6 7", ' ');
+// 	t_stack *head = create_stack_a(arr);
+// 	int i = 0;
+// 	t_stack *node = ft_lstlast(head);
+// 	while (node->previous){
+// 		printf("%d ",node->index);
+// 		node = node->previous;
+// 	}
+// 	printf("%d ",node->index);
+// }
+
 int	is_number(char *str)
 {
-	int	i;
-
+	int (i);
 	i = 0;
+	if (str[0] == '+' || str[0] == '-')
+		i++;
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-		{
-			if (str[i] != '-' && str[i] != '+')
-				return (0);
-		}
+			return (0);
 		i++;
 	}
 	return (1);
@@ -71,9 +68,11 @@ int	is_number(char *str)
 
 int	is_repeated(char **arr, char *numbre)
 {
-	int (i), (count), (number), (arr_num);
+	int (i), (count);
+	long (number), (arr_num);
 	arr_num = 0;
 	count = 0;
+	number = 0;
 	number = ft_atoi(numbre);
 	if (number > 2147483647 || number < -2147483648)
 		return (0);

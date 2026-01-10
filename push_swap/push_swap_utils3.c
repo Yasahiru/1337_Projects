@@ -68,7 +68,7 @@ static void	ft_copy(char const *str, int *start, char *dest, int size)
 		*start += 1;
 }
 
-static void	ft_free(char **arr, int y)
+static void	ft_free1(char **arr, int y)
 {
 	int	i;
 
@@ -100,7 +100,7 @@ char	**ft_split(char const *s, char c)
 		arr[i] = malloc(sizeof(char) * (size + 1));
 		if (!arr[i])
 		{
-			ft_free(arr, i);
+			ft_free1(arr, i);
 			return (0);
 		}
 		ft_copy(s, &j, arr[i++], size);

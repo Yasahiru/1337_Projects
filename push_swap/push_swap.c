@@ -1,27 +1,37 @@
-// #include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hloutman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/07 16:33:35 by hloutman          #+#    #+#             */
+/*   Updated: 2026/01/07 16:33:37 by hloutman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-// char	*ft_strjoin(char const *s1, char const *s2)
+#include "push_swap.h"
+
+// static void	ft_sort(t_stack *stack_a,t_stack *stack_b){
+
+// }
+
+// t_stack	*push_swap(char *joined_args)
 // {
-// 	char	*ptr;
-// 	char	*tmp;
+// 	char	**numbers;
+// 	t_stack	*stack_a;
+// 	t_stack	*stack_b;
 
-// 	int (len_s1), (len_s2);
-// 	if (s1 == NULL && s2 == NULL)
-// 		return (NULL);
-// 	if (!s1)
-// 		s1 = "";
-// 	if (!s2)
-// 		s2 = "";
-// 	len_s1 = ft_strlen(s1);
-// 	len_s2 = ft_strlen(s2);
-// 	ptr = malloc((len_s2 + len_s1 + 1) * sizeof(char));
-// 	if (!ptr)
-// 		return (NULL);
-// 	tmp = ptr;
-// 	while (*s1)
-// 		*ptr++ = (char)*s1++;
-// 	while (*s2)
-// 		*ptr++ = (char)*s2++;
-// 	*ptr = '\0';
-// 	return (tmp);
+// 	stack_a = NULL;
+// 	stack_b = NULL;
+// 	numbers = ft_split(joined_args, ' ');
+// 	free(joined_args);
+// 	if (check_arr(numbers))
+// 	{
+// 		stack_a = create_stack_a(numbers);
+// 		ft_sort(stack_a, stack_b);
+// 	}
+// 	free_arr(numbers);
+// 	show_arr(stack_a);
+// 	return (stack_a);
 // }
