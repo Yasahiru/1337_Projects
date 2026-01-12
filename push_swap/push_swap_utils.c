@@ -36,8 +36,27 @@ t_stack	*create_stack_a(char **arr)
 		node->index = i++;
 		ft_lstadd_back(&head, node);
 	}
+	// ft_sort_index(head);
 	return (head);
 }
+
+// int	ft_sort_index(t_stack *a)
+// {
+// 	int	val;
+// 	int	checker;
+// 	t_stack	*node;
+
+// 	val = node->value;
+// 	while (node->next)
+// 	{
+// 		if (val < node->value)
+// 			checker++;
+// 		node = node->next;
+// 	}
+// 	if (checker > 0)
+// 		return (0);
+	
+// }
 
 // int main(){
 // 	char **arr = ft_split("1 2 3 4 5 6 7", ' ');
@@ -106,6 +125,19 @@ int	is_multiple_signs(char *str)
 		return (0);
 	return (1);
 }
+
+// int	is_sorted(char **arr){
+// 	int	i;
+// 	int	check;
+
+// 	check = 0;
+// 	while (arr[i])
+// 	{
+		
+// 		i++;
+// 	}
+	
+// }
 
 int	check_arr(char **arr)
 {

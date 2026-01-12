@@ -43,36 +43,34 @@ void	ft_free(t_stack *lst)
 	}
 }
 
-int	main(int ac, char **av)
-{
-	int		i;
-	char	**numbers;
-	t_stack	*head;
+// int	main(int ac, char **av)
+// {
+// 	char	**numbers;
+// 	t_stack	*head;
 
-	char *(joined_args), *(temp);
-	if (ac < 3)
-		return (0);
-	if (av[1][0] == '\0' || !ft_isdigit(av[1][0]))
-		return (write(2, "Error\n", 6), 0);
-	i = 1;
-	joined_args = NULL;
-	temp = NULL;
-	head = NULL;
-	while (i < ac)
-	{
-		temp = ft_strjoin(joined_args, av[i]);
-		free(joined_args);
-		joined_args = ft_strjoin(temp, " ");
-		free(temp);
-		i++;
-	}
-	numbers = ft_split(joined_args, ' ');
-	free(joined_args);
-	if (check_arr(numbers))
-		head = create_stack_a(numbers);
-	free_arr(numbers);
-	show_arr(head);
-	ft_free(head);
-}
+// 	char *(joined_args), *(temp);
+// 	if (ac < 3)
+// 		return (0);
+// 	if (av[1][0] == '\0' || !ft_isdigit(av[1][0]))
+// 		return (write(2, "Error\n", 6), 0);
+// 	joined_args = NULL;
+// 	temp = NULL;
+// 	head = NULL;
+// 	while (ac > 0)
+// 	{
+// 		temp = ft_strjoin(joined_args, av[ac]);
+// 		free(joined_args);
+// 		joined_args = ft_strjoin(temp, " ");
+// 		free(temp);
+// 		ac--;
+// 	}
+// 	numbers = ft_split(joined_args, ' ');
+// 	free(joined_args);
+// 	if (check_arr(numbers))
+// 		head = create_stack_a(numbers);
+// 	free_arr(numbers);
+// 	show_arr(head);
+// 	ft_free(head);
+// }
 
 // 95:57:47:33:A2:38
