@@ -15,8 +15,9 @@
 void	ra(t_stack *a)
 {
 	int		tmp;
+	t_stack	*previous_node;
+	t_stack	*last_node;
 
-	t_stack (*last_node), (*previous_node);
 	last_node = ft_lstlast(a);
 	while (last_node->previous)
 	{
@@ -26,14 +27,15 @@ void	ra(t_stack *a)
 		last_node->value = tmp;
 		last_node = last_node->previous;
 	}
-	write(1, "ra\n", 3);	
+	write(1, "ra\n", 3);
 }
 
 void	rb(t_stack *a)
 {
 	int		tmp;
+	t_stack	*previous_node;
+	t_stack	*last_node;
 
-	t_stack (*last_node), (*previous_node);
 	last_node = ft_lstlast(a);
 	while (last_node->previous)
 	{
@@ -43,7 +45,7 @@ void	rb(t_stack *a)
 		last_node->value = tmp;
 		last_node = last_node->previous;
 	}
-	write(1, "ra\n", 3);	
+	write(1, "ra\n", 3);
 }
 
 void	rr(t_stack *a, t_stack *b)
@@ -52,15 +54,3 @@ void	rr(t_stack *a, t_stack *b)
 	rb(b);
 	write(3, "rr\n", 1);
 }
-
-// int main(){
-// 	t_stack *head = create_stack_a(ft_split("1 2", ' '));
-// 	ra(head);
-// 	int y = 0;
-// 	t_stack *node = head;
-// 	while (y < 2){
-// 		printf("%d->", node->value);
-// 		node = node->next;
-// 		y++;
-// 	}
-// }

@@ -12,6 +12,33 @@
 
 #include "push_swap.h"
 
+
+void	ft_sort_value(char **arr)
+{
+	int		i;
+	int		checker;
+	char	*tmp;
+
+	i = 0;
+	checker = 1;
+	while (checker)
+	{
+		checker = 0;
+		i = 0;
+		while (arr[i + 1])
+		{
+			if (ft_atoi(arr[i]) < ft_atoi(arr[i + 1]))
+			{
+				tmp = arr[i];
+				arr[i] = arr[i + 1];
+				arr[i + 1] = tmp;
+				checker = 1;
+			}
+			i++;
+		}
+	}
+}
+
 t_stack	*create_stack_a(char **arr)
 {
 	long	i;
@@ -21,6 +48,7 @@ t_stack	*create_stack_a(char **arr)
 	t_stack	*last_node;
 
 	i = 0;
+	ft_sort_value(arr);
 	head = NULL;
 	number = ft_atoi(arr[i]);
 	head = ft_lstnew(number);
@@ -36,39 +64,8 @@ t_stack	*create_stack_a(char **arr)
 		node->index = i++;
 		ft_lstadd_back(&head, node);
 	}
-	// ft_sort_index(head);
 	return (head);
 }
-
-// int	ft_sort_index(t_stack *a)
-// {
-// 	int	val;
-// 	int	checker;
-// 	t_stack	*node;
-
-// 	val = node->value;
-// 	while (node->next)
-// 	{
-// 		if (val < node->value)
-// 			checker++;
-// 		node = node->next;
-// 	}
-// 	if (checker > 0)
-// 		return (0);
-	
-// }
-
-// int main(){
-// 	char **arr = ft_split("1 2 3 4 5 6 7", ' ');
-// 	t_stack *head = create_stack_a(arr);
-// 	int i = 0;
-// 	t_stack *node = ft_lstlast(head);
-// 	while (node->previous){
-// 		printf("%d ",node->index);
-// 		node = node->previous;
-// 	}
-// 	printf("%d ",node->index);
-// }
 
 int	is_number(char *str)
 {
@@ -125,19 +122,6 @@ int	is_multiple_signs(char *str)
 		return (0);
 	return (1);
 }
-
-// int	is_sorted(char **arr){
-// 	int	i;
-// 	int	check;
-
-// 	check = 0;
-// 	while (arr[i])
-// 	{
-		
-// 		i++;
-// 	}
-	
-// }
 
 int	check_arr(char **arr)
 {

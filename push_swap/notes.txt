@@ -18,6 +18,6 @@ _ in case 100 or less elements:
 
 _ additional functions: 
 	if is sorted => is _sorted()
-	indexing() => buble sort
+	indexing() => buble sort  !!!!!!!!!!!!!!!!!!!!!!!!
 
-	000111001
+_ push to a => (find max) if its in the first half rb . if its at the botton rrb then pa.
