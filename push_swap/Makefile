@@ -15,7 +15,7 @@ NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra # -Werror -fsanitize=address -g3 
 
-SRC = push_swap.c parser.c push_swap_utils.c push_swap_utils2.c push_swap_utils3.c push_swap_utils4.c push_swap_utils5.c operation1.c operation2.c operation3.c operation4.c
+SRC = push_swap.c parser.c push_swap_utils.c push_swap_utils2.c push_swap_utils3.c push_swap_utils4.c push_swap_utils5.c push_swap_utils6.c operation1.c operation2.c operation3.c operation4.c
 
 OBJS = $(SRC:.c=.o)
 

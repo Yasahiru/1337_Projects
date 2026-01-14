@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operation3.c                                       :+:      :+:    :+:   */
+/*   operration3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hloutman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	rra(t_stack *a)
+void	ra(t_stack *a)
 {
 	int		tmp;
 	t_stack	*next_node;
@@ -30,7 +30,7 @@ void	rra(t_stack *a)
 	write(1, "ra\n", 3);
 }
 
-void	rrb(t_stack *b)
+void	rb(t_stack *b)
 {
 	int		tmp;
 	t_stack	*next_node;
@@ -48,9 +48,9 @@ void	rrb(t_stack *b)
 	write(1, "rb\n", 3);
 }
 
-void	rrr(t_stack *a, t_stack *b)
+void	rr(t_stack *a, t_stack *b)
 {
-	rra(a);
-	rrb(b);
+	ra(a);
+	rb(b);
 	write(3, "rr\n", 1);
 }

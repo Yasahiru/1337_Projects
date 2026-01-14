@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	ra(t_stack *a)
+void	rra(t_stack *a)
 {
 	int		tmp;
 	t_stack	*previous_node;
@@ -27,10 +27,10 @@ void	ra(t_stack *a)
 		last_node->value = tmp;
 		last_node = last_node->previous;
 	}
-	write(1, "ra\n", 3);
+	write(1, "rra\n", 3);
 }
 
-void	rb(t_stack *a)
+void	rrb(t_stack *a)
 {
 	int		tmp;
 	t_stack	*previous_node;
@@ -45,12 +45,12 @@ void	rb(t_stack *a)
 		last_node->value = tmp;
 		last_node = last_node->previous;
 	}
-	write(1, "ra\n", 3);
+	write(1, "rrb\n", 3);
 }
 
-void	rr(t_stack *a, t_stack *b)
+void	rrr(t_stack *a, t_stack *b)
 {
-	ra(a);
-	rb(b);
-	write(3, "rr\n", 1);
+	rra(a);
+	rrb(b);
+	write(3, "rrr\n", 1);
 }
