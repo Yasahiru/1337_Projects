@@ -12,35 +12,45 @@
 
 #include "push_swap.h"
 
-void	sa(t_stack *a)
+void	sa(t_stack **a)
 {
-	int		tmp;
+	int		tmp_val;
+	int		tmp_index;
 	t_stack	*last_node_a;
 	t_stack	*previous_node_a;
 
-	last_node_a = ft_lstlast(a);
-	previous_node_a = last_node_a->previous;
-	tmp = last_node_a->value;
+	last_node_a = *a;
+	previous_node_a = last_node_a->next;
+	tmp_val = last_node_a->value;
 	last_node_a->value = previous_node_a->value;
-	previous_node_a->value = tmp;
+	previous_node_a->value = tmp_val;
+
+	tmp_index = last_node_a->index;
+	last_node_a->index = previous_node_a->index;
+	previous_node_a->index = tmp_index;
 	write(1, "sa\n", 3);
 }
 
-void	sb(t_stack *b)
+void	sb(t_stack **b)
 {
-	int		tmp;
+	int		tmp_val;
+	int		tmp_index;
 	t_stack	*last_node_a;
 	t_stack	*previous_node_a;
 
-	last_node_a = ft_lstlast(b);
-	previous_node_a = last_node_a->previous;
-	tmp = last_node_a->value;
+	last_node_a = *b;
+	previous_node_a = last_node_a->next;
+	tmp_val = last_node_a->value;
 	last_node_a->value = previous_node_a->value;
-	previous_node_a->value = tmp;
+	previous_node_a->value = tmp_val;
+
+	tmp_index = last_node_a->index;
+	last_node_a->index = previous_node_a->index;
+	previous_node_a->index = tmp_index;
 	write(1, "sb\n", 3);
 }
 
-void	ss(t_stack *a, t_stack *b)
+void	ss(t_stack **a, t_stack **b)
 {
 	sa(a);
 	sb(b);

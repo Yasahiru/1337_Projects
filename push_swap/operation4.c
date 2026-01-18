@@ -12,43 +12,35 @@
 
 #include "push_swap.h"
 
-void	ra(t_stack *a)
+void	rotate(t_stack **s)
 {
-	int		tmp;
-	t_stack	*next_node;
-	t_stack	*current_node;
+	t_stack *node;
+	t_stack	*last_node;
 
-	current_node = a;
-	while (current_node->next)
-	{
-		next_node = current_node->next;
-		tmp = next_node->value;
-		next_node->value = current_node->value;
-		current_node->value = tmp;
-		current_node = current_node->next;
-	}
+	if (!s || !*s || !(*s)->next)
+		return ;
+	node = *s;
+	last_node = ft_lstlast(*s);
+	(*s)->next->previous = NULL;
+	*s = (*s)->next;
+	node->previous = last_node;
+	node->next = NULL;
+	last_node->next = node;
+}
+
+void	ra(t_stack **a)
+{
+	rotate(a);
 	write(1, "ra\n", 3);
 }
 
-void	rb(t_stack *b)
+void	rb(t_stack **b)
 {
-	int		tmp;
-	t_stack	*next_node;
-	t_stack	*current_node;
-
-	current_node = ft_lstlast(b);
-	while (current_node->next)
-	{
-		next_node = current_node->next;
-		tmp = next_node->value;
-		next_node->value = current_node->value;
-		current_node->value = tmp;
-		current_node = current_node->next;
-	}
+	rotate(b);
 	write(1, "rb\n", 3);
 }
 
-void	rr(t_stack *a, t_stack *b)
+void	rr(t_stack **a, t_stack **b)
 {
 	ra(a);
 	rb(b);

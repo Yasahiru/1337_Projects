@@ -12,7 +12,6 @@
 
 #include "push_swap.h"
 
-
 void	ft_sort_value(char **arr)
 {
 	int		i;
@@ -48,7 +47,7 @@ t_stack	*create_stack_a(char **arr)
 	t_stack	*last_node;
 
 	i = 0;
-	ft_sort_value(arr);
+	// ft_sort_value(arr);
 	head = NULL;
 	number = ft_atoi(arr[i]);
 	head = ft_lstnew(number);

@@ -12,56 +12,43 @@
 
 #include "push_swap.h"
 
-void	pb(t_stack *a, t_stack **b)
+void	push(t_stack **a, t_stack **b)
 {
-	t_stack	*last_node_a;
-	t_stack	*node;
+	t_stack *node;
 
-	if (!a)
-	{
-		printf("a is null");
+	node = *a;
+	if (!a || !b || !*a)
 		return ;
-	}
-	if (!*b || !b)
+	if (!(*a)->next)
+		*a = NULL;
+	else
 	{
-		last_node_a = ft_lstlast(a);
-		node = last_node_a->previous;
+		(*a)->next->previous = NULL;
+		*a = (*a)->next;
+	}
+	if (!*b)
+	{
+		*b = node;
 		node->next = NULL;
-		*b = ft_lstnew(last_node_a->value);
-		write(1, "pb\n", 3);
-		return ;
+		node->previous = NULL;		
 	}
-	last_node_a = ft_lstlast(a);
-	node = last_node_a->previous;
-	node->next = NULL;
-	last_node_a->next = NULL;
-	ft_lstlast(*b)->next = last_node_a;
+	else
+	{
+		(*b)->previous = node;
+		node->previous = NULL;
+		node->next = *b;
+		*b = node;
+	}
+}
+
+void	pb(t_stack **stack_a, t_stack **b)
+{
+	push(stack_a, b);
 	write(1, "pb\n", 3);
 }
 
 void	pa(t_stack **a, t_stack **b)
 {
-	t_stack	*last_node_b;
-	t_stack	*node;
-
-	if (!*b || !b || !a)
-	{
-		write(1, "\npa\n", 4);
-		return ;
-	}
-	last_node_b = ft_lstlast(*b);
-	if (last_node_b->previous)
-	{
-		node = last_node_b->previous;
-		node->next = NULL;
-		ft_lstlast(*a)->next = last_node_b;
-		last_node_b->next = NULL;
-	}
-	else
-	{
-		ft_lstlast(*a)->next = last_node_b;
-		last_node_b->next = NULL;
-		*b = NULL;
-	}
+	push(b, a);
 	write(1, "pa\n", 3);
 }

@@ -12,43 +12,35 @@
 
 #include "push_swap.h"
 
-void	rra(t_stack *a)
+void	reverse_rotate(t_stack **s)
 {
-	int		tmp;
-	t_stack	*previous_node;
+	t_stack *node;
 	t_stack	*last_node;
 
-	last_node = ft_lstlast(a);
-	while (last_node->previous)
-	{
-		previous_node = last_node->previous;
-		tmp = previous_node->value;
-		previous_node->value = last_node->value;
-		last_node->value = tmp;
-		last_node = last_node->previous;
-	}
+	if (!s || !*s || !(*s)->next)
+		return ;
+	node = *s;
+	last_node = ft_lstlast(*s);
+	last_node->previous->next = NULL;
+	last_node->previous = NULL;
+	last_node->next = node;
+	node->previous = last_node;
+	*s = last_node;
+}
+
+void	rra(t_stack **a)
+{
+	reverse_rotate(a);
 	write(1, "rra\n", 3);
 }
 
-void	rrb(t_stack *a)
+void	rrb(t_stack **b)
 {
-	int		tmp;
-	t_stack	*previous_node;
-	t_stack	*last_node;
-
-	last_node = ft_lstlast(a);
-	while (last_node->previous)
-	{
-		previous_node = last_node->previous;
-		tmp = previous_node->value;
-		previous_node->value = last_node->value;
-		last_node->value = tmp;
-		last_node = last_node->previous;
-	}
+	reverse_rotate(b);
 	write(1, "rrb\n", 3);
 }
 
-void	rrr(t_stack *a, t_stack *b)
+void	rrr(t_stack **a, t_stack **b)
 {
 	rra(a);
 	rrb(b);

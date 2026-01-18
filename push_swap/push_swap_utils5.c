@@ -63,15 +63,3 @@ int	ft_lstsize(t_stack *lst)
 		return (1 + ft_lstsize(lst->next));
 	return (1);
 }
-
-// int main(){
-// 	t_stack *head = NULL;
-// 	int i = 1;
-// 	while (i < 4){
-// 		t_stack *node = ft_lstnew(i);
-// 		ft_lstadd_back(&head,node);
-// 		i++;
-// 	}
-// 	printf("size = %d", ft_lstsize(head));
-// 	// free();
-// }
