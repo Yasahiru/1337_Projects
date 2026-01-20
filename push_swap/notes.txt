@@ -1,20 +1,10 @@
 
-_ less than 5,4 3,2 => HARD CODE IT
+2 3 4 | 1
+1 3 4 | 2
+1 2 4 | 3
+1 2 3 | 4
 
 
-_ find position of the max (stack_b)
-	if the max in the first half : rb untill he becomes at the top
-	else: rrb untill he becomes a the top
-	then: pa
-
-
-postion_max = find_max() => returns position of the max in int the stack_b
-
-if postion_max < size_b / 2
-	while (postion_max--)
-		rb;
-else if postion_max >= size / 2
-	while (postion_max++ <= size)
-		rrb
-pa()	
-
+2 3 4 1
+4 1 2 3
+1 2 3 | 4

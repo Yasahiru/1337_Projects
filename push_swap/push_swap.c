@@ -98,13 +98,22 @@ void	ft_sort_2(t_stack *stack_a, t_stack *stack_b)
 	pa(&stack_a, &stack_b);
 }
 
-int main(){
-	t_stack *head = create_stack_a(ft_split("1 5 3 -8 9",' '));
-	t_stack *head2 = NULL;
-	ft_sort(head, head2, 5);
-	while (head2)
-	{
-		printf("%d[%d]", head2->value, head2->index);
-		head2 = head2->next;
-	}
-}
+// int main()
+// {
+// 	t_stack *head2 = create_stack_a(ft_split("3 1 2",' '));
+// 	// t_stack *head2 = NULL;
+// 	t_stack	*node = head2;
+// 	while (node)
+// 	{
+// 		printf("%d[%d] \n", node->value,node->index);
+// 		node = node->next;
+// 	}
+// 	// sa(&head2);2
+// 	ra(&head2);
+// 	// ft_sort(head, head2, 5);
+// 	while (head2)
+// 	{
+// 		printf("%d[%d] \n", head2->value, head2->index);
+// 		head2 = head2->next;
+// 	}
+// }
