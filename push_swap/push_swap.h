@@ -63,12 +63,13 @@ void	show_arr(t_stack *head);
 void	ft_sort_value(char **arr);
 void	ss(t_stack **a, t_stack **b);
 void	rr(t_stack **a, t_stack **b);
-void	rrr(t_stack **a, t_stack **b);
-void	pb(t_stack **a, t_stack **b);
 void	pa(t_stack **a, t_stack **b);
-void	ft_sort(t_stack **a,t_stack **stack_b, int size);
+void	pb(t_stack **a, t_stack **b);
+void	rrr(t_stack **a, t_stack **b);
+void	ft_push_max(t_stack **a, t_stack **b);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
 void	ft_lstclear(t_stack **lst, void (*del)(int));
 void	ft_lstadd_front(t_stack **lst, t_stack *new);
+void	ft_sort(t_stack **a,t_stack **stack_b, int size);
 
 #endif
