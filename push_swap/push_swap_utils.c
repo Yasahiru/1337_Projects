@@ -12,7 +12,25 @@
 
 #include "push_swap.h"
 
-void	ft_sort_value(char **arr)
+void	ft_give_index(char **arr, t_stack **a)
+{
+	int	i;
+
+	i = 0;
+	while (*a)
+	{
+		i = 0;
+		while (arr[i])
+		{
+			if ((*a)->value == ft_atoi(arr[i]))
+				(*a)->index = i;
+			i++;
+		}
+		*a = (*a)->next;
+	}
+}
+
+void	ft_sort_value(char **arr, t_stack **a)
 {
 	int		i;
 	int		checker;
@@ -36,6 +54,7 @@ void	ft_sort_value(char **arr)
 			i++;
 		}
 	}
+	ft_give_index(arr, a);
 }
 
 t_stack	*create_stack_a(char **arr)
@@ -47,7 +66,6 @@ t_stack	*create_stack_a(char **arr)
 	t_stack	*last_node;
 
 	i = 0;
-	// ft_sort_value(arr);
 	head = NULL;
 	number = ft_atoi(arr[i]);
 	head = ft_lstnew(number);
@@ -63,6 +81,7 @@ t_stack	*create_stack_a(char **arr)
 		node->index = i++;
 		ft_lstadd_back(&head, node);
 	}
+	ft_sort_value(arr, &head);
 	return (head);
 }
 

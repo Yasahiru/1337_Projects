@@ -39,3 +39,54 @@ void	ft_push_max(t_stack **a, t_stack **b)
 		ra(a);
 	}
 }
+
+char	**is_args_valid(int ac, char **av)
+{
+	char	*joined_args;
+	char	**numbers;
+	char	*temp;
+	int		i;
+	int		args;
+
+	joined_args = NULL;
+	temp = NULL;
+	i = 1;
+	args = 0;
+	while (i < ac)
+	{
+		temp = ft_strjoin(joined_args, av[i]);
+		free(joined_args);
+		joined_args = ft_strjoin(temp, " ");
+		free(temp);
+		i++;
+	}
+	numbers = ft_split(joined_args, ' ');
+	free(joined_args);
+	return (numbers);
+}
+
+int	main(int ac, char **av)
+{
+	char	**numbers;
+	t_stack	*a;
+	t_stack	*b;
+
+	if (ac < 2)
+		return (0);
+	a = NULL;
+	b = NULL;
+	numbers = is_args_valid(ac, av);
+	if (!numbers)
+		return (0);
+	if (ft_is_sorted(numbers))
+		return (0);
+	if (check_arr(numbers))
+		a = create_stack_a(numbers);
+	// if (ft_lstsize(a) <= 5)
+	// 	ft_auto_sort(ft_lstsize(a), &a, &b);
+	ft_final_sort(&a, &b);
+	free_arr(numbers);
+	show_arr(a);
+	ft_free(a);
+	return (0);
+}

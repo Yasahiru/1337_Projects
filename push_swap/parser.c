@@ -16,7 +16,12 @@ void	show_arr(t_stack *head)
 {
 	while (head)
 	{
-		printf("%d [%d]\n", head->value, head->index);
+		if (!(head->next))
+		{
+			printf(" %d[%d]", head->value, head->index);
+			return ;
+		}
+		printf(" %d[%d]", head->value, head->index);
 		head = head->next;
 	}
 }
@@ -43,36 +48,50 @@ void	ft_free(t_stack *lst)
 	}
 }
 
-int	main(int ac, char **av)
+void	ft_auto_sort(int len, t_stack **a, t_stack **b)
 {
-	char	**numbers;
-	t_stack	*head;
+	if (len == 2)
+		ft_auto_2(a);
+	else if (len == 3)
+		ft_auto_3(a);
+	else if (len == 4)
+		ft_auto_4(a, b);
+	else if (len == 5)
+		ft_auto_5(a, b);
+}
 
-	char *(joined_args), *(temp);
-	if (ac < 3)
-		return (0);
-	if (av[1][0] == '\0' || !ft_isvalid(av[0][1]))
-		return (write(2, "Error\n", 6), 0);
-	joined_args = NULL;
-	temp = NULL;
-	head = NULL;
-	while (ac > 0)
+void	ft_fill_stack_a(t_stack **a, t_stack **b)
+{
+	while ((*b))
+		pa(a, b);
+}
+
+void	ft_final_sort(t_stack **a, t_stack **b)
+{
+	int i;
+	int x;
+	int bite;
+	int size;
+
+	i = 0;
+	x = convert_base_2(ft_find_max(a));
+	bite = 0;
+	
+	while (bite < x)
 	{
-		temp = ft_strjoin(joined_args, av[ac]);
-		free(joined_args);
-		joined_args = ft_strjoin(temp, " ");
-		free(temp);
-		ac--;
+		i = 0;
+		size = ft_lstsize(*a);
+		while (i < size)
+		{
+			if (((*a)->value) >> bite & 1)
+				ra(a);
+			else
+				pb(a, b);
+			i++;
+		}
+		ft_fill_stack_a(a, b);
+		bite++;
 	}
-	numbers = ft_split(joined_args, ' ');
-	free(joined_args);
-	if (ft_is_sorted(numbers))
-		return (0);
-	if (check_arr(numbers))
-		head = create_stack_a(numbers);
-	free_arr(numbers);
-	show_arr(head);
-	ft_free(head);
 }
 
 

@@ -12,32 +12,41 @@
 
 #include "push_swap.h"
 
-int	ft_arr_len(char**arr)
+int	ft_arr_len(char **arr)
 {
 	int	i;
 
 	i = 0;
-	while (arr[i])
+	while (*arr)
+	{
 		i++;
+		arr++;
+	}
 	return (i);
 }
 
 int	ft_is_sorted(char **arr)
 {
-	int	c;
 	int	i;
+	int	num1;
+	int	num2;
+	int	sort;
 
-	c = 0;
-	i = ft_arr_len(arr) - 1;
-	while (i > 0)
+	i = 0;
+	num1 = 0;
+	num2 = 0;
+	sort = 1;
+	while (i < ft_arr_len(arr) - 1)
 	{
-		if (ft_atoi(arr[i - 1]) < ft_atoi(arr[i]))
-			c++;
-		i--;
+		num1 = ft_atoi(arr[i]);
+		num2 = ft_atoi(arr[i + 1]);
+		if (num1 > num2)
+			sort = 0;
+		i++;
 	}
-	if (c > 0)
-		return (0);
-	return (1);
+	if (sort)
+		return (1);
+	return (0);
 }
 
 void	ft_set_index(t_stack *head, char **arr)

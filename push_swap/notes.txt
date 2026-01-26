@@ -1,5 +1,3 @@
-9 4 8 7 0     pb
-4 8 7 0 | 9   ra
-8 7 0 4 | 9   pb
-7 0 4 | 8 9   ra
-7 0 4 | 8 9   sb
+Switch from arrray to linked list
+
+_ remove array => change (ft_is_sorted + ft_arr_len + free_arr + is_args_valid)
