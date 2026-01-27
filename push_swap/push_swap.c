@@ -65,7 +65,7 @@ char	**is_args_valid(int ac, char **av)
 	return (numbers);
 }
 
-int	main(int ac, char **av)
+int	main2(int ac, char **av)
 {
 	char	**numbers;
 	t_stack	*a;
@@ -78,12 +78,13 @@ int	main(int ac, char **av)
 	numbers = is_args_valid(ac, av);
 	if (!numbers)
 		return (0);
-	if (ft_is_sorted(numbers))
-		return (0);
 	if (check_arr(numbers))
 		a = create_stack_a(numbers);
+	if (ft_is_sorted(numbers))
+		return (0);
 	// if (ft_lstsize(a) <= 5)
 	// 	ft_auto_sort(ft_lstsize(a), &a, &b);
+	
 	ft_final_sort(&a, &b);
 	free_arr(numbers);
 	show_arr(a);

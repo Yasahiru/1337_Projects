@@ -19,6 +19,7 @@ t_stack	*ft_lstnew(int content)
 	if (!newlist)
 		return (NULL);
 	newlist->value = content;
+	newlist->index = 0;
 	newlist->next = NULL;
 	return (newlist);
 }

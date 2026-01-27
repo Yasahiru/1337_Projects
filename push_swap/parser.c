@@ -94,5 +94,16 @@ void	ft_final_sort(t_stack **a, t_stack **b)
 	}
 }
 
+int main(){
+	t_stack *a = create_stack_a(ft_split("2 0 1 3 8 ", ' '));
+	t_stack *b = NULL;
+	ft_final_sort(&a,&b);
+	while (a)
+	{
+		printf(" %d", a->value);
+		a = a->next;
+	}
+}
+
 
 // 95:57:47:33:A2:38

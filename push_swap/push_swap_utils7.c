@@ -8,7 +8,7 @@ int	ft_find_max(t_stack **a)
 	t_stack	*node;
 
 	i = 1;
-	max = -2147483648;
+	max = (*a)->value;
 	pos = 0;
 	node = *a;
 	while (node)
@@ -24,8 +24,6 @@ int convert_base_2(int number)
 {
 	int i = 0;
 	while (number >> i)
-	{
 		i++;
-	}
 	return (i);
 }

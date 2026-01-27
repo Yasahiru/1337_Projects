@@ -74,6 +74,8 @@ void	rrr(t_stack **a, t_stack **b);
 void	ft_auto_4(t_stack **a, t_stack **b);
 void	ft_auto_5(t_stack **a, t_stack **b);
 void	ft_push_max(t_stack **a, t_stack **b);
+void	ft_sort_value(char **arr, t_stack **a);
+void	ft_give_index(char **arr, t_stack **a);
 void	ft_final_sort(t_stack **a, t_stack **b);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
 void	ft_lstclear(t_stack **lst, void (*del)(int));

@@ -46,6 +46,7 @@ void	ft_sort_value(char **arr, t_stack **a)
 		{
 			if (ft_atoi(arr[i]) < ft_atoi(arr[i + 1]))
 			{
+				printf("number %ld\n",ft_atoi(arr[i]));
 				tmp = arr[i];
 				arr[i] = arr[i + 1];
 				arr[i + 1] = tmp;
@@ -59,29 +60,26 @@ void	ft_sort_value(char **arr, t_stack **a)
 
 t_stack	*create_stack_a(char **arr)
 {
-	long	i;
 	int		number;
 	t_stack	*head;
 	t_stack	*node;
 	t_stack	*last_node;
 
-	i = 0;
 	head = NULL;
-	number = ft_atoi(arr[i]);
+	number = ft_atoi(*arr);
 	head = ft_lstnew(number);
 	head->previous = NULL;
-	head->index = i;
-	i++;
-	while (arr[i])
+	arr++;
+	while (*arr)
 	{
-		number = ft_atoi(arr[i]);
+		number = ft_atoi(*arr);
 		node = ft_lstnew(number);
 		last_node = ft_lstlast(head);
 		node->previous = last_node;
-		node->index = i++;
 		ft_lstadd_back(&head, node);
+		arr++;
 	}
-	ft_sort_value(arr, &head);
+	// ft_sort_value(arr, &head);
 	return (head);
 }
 
@@ -158,3 +156,4 @@ int	check_arr(char **arr)
 	}
 	return (1);
 }
+
