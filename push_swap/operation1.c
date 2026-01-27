@@ -24,7 +24,6 @@ void	sa(t_stack **a)
 	tmp_val = last_node_a->value;
 	last_node_a->value = previous_node_a->value;
 	previous_node_a->value = tmp_val;
-
 	tmp_index = last_node_a->index;
 	last_node_a->index = previous_node_a->index;
 	previous_node_a->index = tmp_index;
@@ -43,7 +42,6 @@ void	sb(t_stack **b)
 	tmp_val = last_node_a->value;
 	last_node_a->value = previous_node_a->value;
 	previous_node_a->value = tmp_val;
-
 	tmp_index = last_node_a->index;
 	last_node_a->index = previous_node_a->index;
 	previous_node_a->index = tmp_index;

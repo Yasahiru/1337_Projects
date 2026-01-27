@@ -58,7 +58,7 @@ long	ft_atoi(const char *str)
 	return (21474836478);
 }
 
-size_t	ft_strlen(const char*str)
+size_t	ft_strlen(const char *str)
 {
 	size_t	i;
 

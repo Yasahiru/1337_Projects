@@ -17,12 +17,12 @@ void	ft_auto_2(t_stack **stack_a)
 	sa(stack_a);
 }
 
-void	ft_sort_3(t_stack *first, t_stack *second,
-	t_stack *third, t_stack **stack_a)
+void	ft_sort_3(t_stack *first, t_stack *second, t_stack *third,
+		t_stack **stack_a)
 {
-		if (first->value < second->value && second->value < third->value
-			&& third->value > first->value)
-				return ;
+	if (first->value < second->value && second->value < third->value
+		&& third->value > first->value)
+		return ;
 	if (first->value > second->value && first->value > third->value)
 	{
 		if (second->value > third->value)

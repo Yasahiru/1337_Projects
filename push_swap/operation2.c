@@ -14,7 +14,7 @@
 
 void	push(t_stack **a, t_stack **b)
 {
-	t_stack *node;
+	t_stack	*node;
 
 	node = *a;
 	if (!a || !b || !*a)
@@ -30,7 +30,7 @@ void	push(t_stack **a, t_stack **b)
 	{
 		*b = node;
 		node->next = NULL;
-		node->previous = NULL;		
+		node->previous = NULL;
 	}
 	else
 	{

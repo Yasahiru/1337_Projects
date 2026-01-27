@@ -12,52 +12,6 @@
 
 #include "push_swap.h"
 
-void	ft_give_index(char **arr, t_stack **a)
-{
-	int	i;
-
-	i = 0;
-	while (*a)
-	{
-		i = 0;
-		while (arr[i])
-		{
-			if ((*a)->value == ft_atoi(arr[i]))
-				(*a)->index = i;
-			i++;
-		}
-		*a = (*a)->next;
-	}
-}
-
-void	ft_sort_value(char **arr, t_stack **a)
-{
-	int		i;
-	int		checker;
-	char	*tmp;
-
-	i = 0;
-	checker = 1;
-	while (checker)
-	{
-		checker = 0;
-		i = 0;
-		while (arr[i + 1])
-		{
-			if (ft_atoi(arr[i]) < ft_atoi(arr[i + 1]))
-			{
-				printf("number %ld\n",ft_atoi(arr[i]));
-				tmp = arr[i];
-				arr[i] = arr[i + 1];
-				arr[i + 1] = tmp;
-				checker = 1;
-			}
-			i++;
-		}
-	}
-	ft_give_index(arr, a);
-}
-
 t_stack	*create_stack_a(char **arr)
 {
 	int		number;
@@ -85,7 +39,8 @@ t_stack	*create_stack_a(char **arr)
 
 int	is_number(char *str)
 {
-	int (i);
+	int	i;
+
 	i = 0;
 	if (str[0] == '+' || str[0] == '-')
 		i++;
@@ -156,4 +111,3 @@ int	check_arr(char **arr)
 	}
 	return (1);
 }
-

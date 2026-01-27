@@ -65,7 +65,7 @@ char	**is_args_valid(int ac, char **av)
 	return (numbers);
 }
 
-int	main2(int ac, char **av)
+int	main4(int ac, char **av)
 {
 	char	**numbers;
 	t_stack	*a;
@@ -84,9 +84,8 @@ int	main2(int ac, char **av)
 		return (0);
 	// if (ft_lstsize(a) <= 5)
 	// 	ft_auto_sort(ft_lstsize(a), &a, &b);
-	
 	ft_final_sort(&a, &b);
-	free_arr(numbers);
+	// free_arr(numbers);
 	show_arr(a);
 	ft_free(a);
 	return (0);

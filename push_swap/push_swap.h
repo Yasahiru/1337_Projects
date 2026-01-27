@@ -62,8 +62,7 @@ void	rrb(t_stack **b);
 void	free_arr(char **arr);
 void	ft_free(t_stack *lst);
 void	show_arr(t_stack *head);
-void	show_arr(t_stack *head);
-void	ft_sort_value(char **arr, t_stack **a);
+void	ft_give_index(t_stack **a);
 void	ft_auto_2(t_stack **stack_a);
 void	ft_auto_3(t_stack **stack_a);
 void	ss(t_stack **a, t_stack **b);
@@ -75,13 +74,14 @@ void	ft_auto_4(t_stack **a, t_stack **b);
 void	ft_auto_5(t_stack **a, t_stack **b);
 void	ft_push_max(t_stack **a, t_stack **b);
 void	ft_sort_value(char **arr, t_stack **a);
-void	ft_give_index(char **arr, t_stack **a);
+void	ft_sort_value(char **arr, t_stack **a);
 void	ft_final_sort(t_stack **a, t_stack **b);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
 void	ft_lstclear(t_stack **lst, void (*del)(int));
 void	ft_lstadd_front(t_stack **lst, t_stack *new);
 void	ft_auto_sort(int len, t_stack **a, t_stack **b);
-void	ft_sort(t_stack **a,t_stack **stack_b, int size);
-void	ft_sort_3(t_stack *first, t_stack *second,t_stack *third, t_stack **stack_a);
+void	ft_sort(t_stack **a, t_stack **stack_b, int size);
+void	ft_sort_3(t_stack *first, t_stack *second,
+			t_stack *third, t_stack **stack_a);
 
 #endif
