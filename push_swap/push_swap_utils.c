@@ -14,11 +14,13 @@
 
 t_stack	*create_stack_a(char **arr)
 {
-	int		number;
-	t_stack	*head;
-	t_stack	*node;
 	t_stack	*last_node;
+	t_stack	*node;
+	t_stack	*head;
+	long	number;
+	int		i;
 
+	i = 0;
 	head = NULL;
 	number = ft_atoi(*arr);
 	head = ft_lstnew(number);
@@ -33,81 +35,73 @@ t_stack	*create_stack_a(char **arr)
 		ft_lstadd_back(&head, node);
 		arr++;
 	}
-	// ft_sort_value(arr, &head);
+	ft_give_index(&head);
 	return (head);
 }
 
-int	is_number(char *str)
+int	is_repeated(t_stack **a, int number)
 {
-	int	i;
+	t_stack	*node;
+	int		count;
 
-	i = 0;
-	if (str[0] == '+' || str[0] == '-')
-		i++;
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-int	is_repeated(char **arr, char *numbre)
-{
-	int (i), (count);
-	long (number), (arr_num);
-	arr_num = 0;
 	count = 0;
-	number = 0;
-	number = ft_atoi(numbre);
-	if (number > 2147483647 || number < -2147483648)
-		return (0);
-	i = 0;
-	while (arr[i])
+	node = (*a);
+	while (node)
 	{
-		arr_num = ft_atoi(arr[i]);
-		if (arr_num > 2147483647 || arr_num < -2147483648)
-			return (0);
-		if (arr_num == number)
+		if (node->value == number)
 			count++;
-		i++;
+		node = node->next;
 	}
 	if (count > 1)
-		return (0);
-	return (1);
+		return (1);
+	return (0);
 }
 
-int	is_multiple_signs(char *str)
+int	is_overflow(long num)
 {
-	int (i), (count);
-	i = 0;
-	count = 0;
-	while (str[i])
-	{
-		if (str[i] == '-' || str[i] == '+')
-			count++;
-		i++;
-	}
-	if (count > 1)
-		return (0);
-	return (1);
+	if (num > 2147483647 || num < -2147483648)
+		return (1);
+	return (0);
 }
 
-int	check_arr(char **arr)
+int	second_check(t_stack **a)
 {
-	int (i), (checker);
-	i = 0;
-	checker = 0;
-	while (arr[i])
+	t_stack	*node;
+
+	node = (*a);
+	while (node)
 	{
-		if (!is_repeated(arr, arr[i]))
-			checker++;
-		if (checker > 0)
-			return (write(2, "Error\n", 6), 0);
-		if ((!is_number(arr[i]) || !is_multiple_signs(arr[i])))
-			return (write(2, "Error\n", 6), 0);
-		i++;
+		if (is_repeated(a, node->value))
+			return (0);
+		node = node->next;
 	}
 	return (1);
 }
+
+
+// void    radix_sort(t_stack a, t_stack b)
+// {
+//     int    biggest_nbr;
+//     int    max_bits;
+//     int    i;
+//     int    j;
+
+//     biggest_nbr = find_biggest(a);
+//     max_bits = find_bits(biggest_nbr);
+//     i = 0;
+//     while (i < max_bits)
+//     {
+//         j = 0;
+//         while (j <= biggest_nbr)
+//         {
+//             if (((a)->index >> i) & 1)
+//                 ra (a);
+//             else
+//                 pb(a, b);
+//             j++;
+//         }
+//         while (*b)
+//             pa(a, b);
+//         i++;
+//     }
+// }

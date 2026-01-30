@@ -12,6 +12,23 @@
 
 #include "push_swap.h"
 
+void	clear_and_exit(char *str, char **arr, t_stack **stack)
+{
+	if (str)
+		free(str);
+	if (arr)
+		free_arr(arr);
+	if (stack)
+		ft_lstclear(stack);
+}
+
+void	ft_exit(char *str, char **arr, t_stack **stack)
+{
+	clear_and_exit(str, arr, stack);
+	write(2, "Error\n", 6);
+	return ;
+}
+
 void	ft_push_max(t_stack **a, t_stack **b)
 {
 	int		max;
@@ -40,53 +57,33 @@ void	ft_push_max(t_stack **a, t_stack **b)
 	}
 }
 
-char	**is_args_valid(int ac, char **av)
+int	is_good(t_stack **a)
 {
-	char	*joined_args;
-	char	**numbers;
-	char	*temp;
-	int		i;
-	int		args;
-
-	joined_args = NULL;
-	temp = NULL;
-	i = 1;
-	args = 0;
-	while (i < ac)
-	{
-		temp = ft_strjoin(joined_args, av[i]);
-		free(joined_args);
-		joined_args = ft_strjoin(temp, " ");
-		free(temp);
-		i++;
-	}
-	numbers = ft_split(joined_args, ' ');
-	free(joined_args);
-	return (numbers);
+	if (!second_check(a))
+		return (0);
+	if (ft_is_sorted(a))
+		return (1);
+	return (2);
 }
 
-int	main4(int ac, char **av)
+int	main33(int ac, char **av)
 {
-	char	**numbers;
-	t_stack	*a;
-	t_stack	*b;
-
+	t_stack (*a), (*b);
 	if (ac < 2)
-		return (0);
-	a = NULL;
+		return (write(2, "Error\n", 6), 0);
 	b = NULL;
-	numbers = is_args_valid(ac, av);
-	if (!numbers)
+	if (!is_args_valid(ac, av))
+		return (ft_exit(NULL, NULL, NULL), 0);
+	av++;
+	a = create_stack_a(av);
+	if (is_good(&a) == 1)
 		return (0);
-	if (check_arr(numbers))
-		a = create_stack_a(numbers);
-	if (ft_is_sorted(numbers))
-		return (0);
-	// if (ft_lstsize(a) <= 5)
-	// 	ft_auto_sort(ft_lstsize(a), &a, &b);
-	ft_final_sort(&a, &b);
-	// free_arr(numbers);
-	show_arr(a);
-	ft_free(a);
+	else if (is_good(&a) == 0)
+		return (ft_exit(NULL, NULL, &a), 0);
+	ft_auto_sort(ft_lstsize(a), &a, &b);
+	clear_and_exit(NULL, NULL, &a);
 	return (0);
 }
+
+// 100 under 1300
+// 500 under 11500

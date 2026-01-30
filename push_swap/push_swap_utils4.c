@@ -66,18 +66,17 @@ char	*ft_strdup(const char *s)
 	return (newstr);
 }
 
-static void	ft_free2(t_stack *lst, void (*del)(int))
+static void	ft_free2(t_stack *lst)
 {
 	if (lst)
 	{
-		ft_free2(lst->next, del);
-		del(lst->value);
+		ft_free2(lst->next);
 		free(lst);
 	}
 }
 
-void	ft_lstclear(t_stack **lst, void (*del)(int))
+void	ft_lstclear(t_stack **lst)
 {
-	ft_free2(*lst, del);
-	*lst = (NULL);
+	lst = (NULL);
+	ft_free2(*lst);
 }

@@ -17,52 +17,29 @@ void	ft_auto_2(t_stack **stack_a)
 	sa(stack_a);
 }
 
-void	ft_sort_3(t_stack *first, t_stack *second, t_stack *third,
-		t_stack **stack_a)
+void	ft_auto_3(t_stack **a, t_stack **b)
 {
-	if (first->value < second->value && second->value < third->value
-		&& third->value > first->value)
-		return ;
-	if (first->value > second->value && first->value > third->value)
+	pb(a, b);
+	if ((*a)->value > (*a)->next->value)
+		sa(a);
+	if ((*a)->value > (*b)->value)
+		pa(a, b);
+	else if ((*a)->next->value < (*b)->value)
 	{
-		if (second->value > third->value)
-		{
-			ra(stack_a);
-			sa(stack_a);
-		}
-		else
-			ra(stack_a);
+		pa(a, b);
+		rra(a);
 	}
-	else if (second->value > first->value && second->value > third->value)
+	else
 	{
-		if (first->value > third->value)
-			rra(stack_a);
-		else
-		{
-			rra(stack_a);
-			sa(stack_a);
-		}
+		pa(a, b);
+		sa(a);
 	}
-	else if (third->value > second->value && third->value > first->value)
-		sa(stack_a);
-}
-
-void	ft_auto_3(t_stack **stack_a)
-{
-	t_stack	*first;
-	t_stack	*second;
-	t_stack	*third;
-
-	first = *stack_a;
-	second = first->next;
-	third = second->next;
-	ft_sort_3(first, second, third, stack_a);
 }
 
 void	ft_auto_4(t_stack **a, t_stack **b)
 {
 	ft_push_max(a, b);
-	ft_auto_3(a);
+	ft_auto_3(a, b);
 	pa(a, b);
 	ra(a);
 }

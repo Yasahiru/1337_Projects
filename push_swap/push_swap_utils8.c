@@ -14,7 +14,7 @@
 
 void	ft_give_index(t_stack **a)
 {
-	int	count;
+	int		count;
 	t_stack	*node;
 	t_stack	*node2;
 
@@ -35,43 +35,16 @@ void	ft_give_index(t_stack **a)
 	}
 }
 
-// void	ft_sort_value(char **arr, t_stack **a)
-// {
-// 	int		i;
-// 	int		checker;
-// 	char	*tmp;
-
-// 	i = 0;
-// 	checker = 1;
-// 	while (checker)
-// 	{
-// 		checker = 0;
-// 		i = 0;
-// 		while (arr[i + 1])
-// 		{
-// 			if (ft_atoi(arr[i]) < ft_atoi(arr[i + 1]))
-// 			{
-// 				tmp = arr[i];
-// 				arr[i] = arr[i + 1];
-// 				arr[i + 1] = tmp;
-// 				checker = 1;
-// 			}
-// 			i++;
-// 		}
-// 	}
-// 	ft_give_index(a);
-// }
-
 void	show_arr(t_stack *head)
 {
 	while (head)
 	{
 		if (!(head->next))
 		{
-			printf(" %d[%d]", head->value, head->index);
+			printf(" %ld[%d]", head->value, head->index);
 			return ;
 		}
-		printf(" %d[%d]", head->value, head->index);
+		printf(" %ld[%d]", head->value, head->index);
 		head = head->next;
 	}
 }

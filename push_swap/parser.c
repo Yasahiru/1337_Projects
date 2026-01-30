@@ -26,11 +26,13 @@ void	ft_auto_sort(int len, t_stack **a, t_stack **b)
 	if (len == 2)
 		ft_auto_2(a);
 	else if (len == 3)
-		ft_auto_3(a);
+		ft_auto_3(a, b);
 	else if (len == 4)
 		ft_auto_4(a, b);
 	else if (len == 5)
 		ft_auto_5(a, b);
+	else
+		ft_final_sort(a, b);
 }
 
 void	ft_fill_stack_a(t_stack **a, t_stack **b)
@@ -39,42 +41,49 @@ void	ft_fill_stack_a(t_stack **a, t_stack **b)
 		pa(a, b);
 }
 
+int    find_biggest(t_stack *head)
+{
+    int        big;
+    t_stack    *tmp;
+
+    big = INT_MIN;
+    tmp = head;
+    while (tmp)
+    {
+        if (tmp->index > big)
+            big = tmp->index;
+        tmp = tmp->next;
+    }
+    return (big);
+}
+
 void	ft_final_sort(t_stack **a, t_stack **b)
 {
-	int	i;
-	int	x;
-	int	bite;
-	int	size;
+    int    biggest_nbr;
+    int    max_bits;
+    int    i;
+    int    j;
 
+	biggest_nbr = find_biggest(*a);
+    max_bits = convert_base_2(biggest_nbr);
 	i = 0;
-	x = convert_base_2(ft_find_max(a));
-	bite = 0;
-	ft_give_index(a);
-	while (bite < x)
+	while (i < max_bits)
 	{
-		i = 0;
-		size = ft_lstsize(*a);
-		while (i < size)
+		j = 0;
+		while (j <= biggest_nbr)
 		{
-			if (((*a)->index) >> bite & 1)
+			if (((*a)->index) >> i & 1)
 				ra(a);
 			else
 				pb(a, b);
-			i++;
+			j++;
 		}
-		ft_fill_stack_a(a, b);
-		bite++;
+		while ((*b))
+			pa(a, b);
+		i++;
 	}
 }
 
-int main(){
-	t_stack *a = create_stack_a(ft_split("2 1 3 0 9 -4", ' '));
-	t_stack *b = NULL;
-	ft_final_sort(&a, &b);
-	// show_arr(a);
-}
-
 // 95:57:47:33:A2:38
-
-// python3 -m c_formatter_42 ex*/*
 // python3 -m pip install c-formatter-42
+// python3 -m c_formatter_42 ex*/*
