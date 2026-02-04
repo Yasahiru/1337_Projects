@@ -29,26 +29,26 @@ void	ft_exit(char *str, char **arr, t_stack **stack)
 	return ;
 }
 
-void	ft_push_max(t_stack **a, t_stack **b)
+void	ft_push_min(t_stack **a, t_stack **b)
 {
-	int		max;
+	int		min;
 	int		pos;
 	int		i;
 	t_stack	*node;
 
 	i = 1;
-	max = -2147483648;
+	min = 2147483647;
 	pos = 0;
 	node = *a;
 	while (node)
 	{
-		if (max < node->value)
-			max = node->value;
+		if (min > node->value)
+			min = node->value;
 		node = node->next;
 	}
 	while (*a)
 	{
-		if ((*a)->value == max)
+		if ((*a)->value == min)
 		{
 			pb(a, b);
 			return ;
@@ -66,24 +66,31 @@ int	is_good(t_stack **a)
 	return (2);
 }
 
-int	main33(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_stack (*a), (*b);
-	if (ac < 2)
-		return (write(2, "Error\n", 6), 0);
-	b = NULL;
-	if (!is_args_valid(ac, av))
-		return (ft_exit(NULL, NULL, NULL), 0);
-	av++;
-	a = create_stack_a(av);
-	if (is_good(&a) == 1)
-		return (0);
-	else if (is_good(&a) == 0)
-		return (ft_exit(NULL, NULL, &a), 0);
-	ft_auto_sort(ft_lstsize(a), &a, &b);
-	clear_and_exit(NULL, NULL, &a);
-	return (0);
-}
+	char		**joined_args;
+	int			i;
+	char		*args;
+	t_stack		*a;
+	t_stack		*b;
 
-// 100 under 1300
-// 500 under 11500
+	i = 0;
+	if (ac < 2)
+		return (0);
+	b = NULL;
+	args = join_args(ac, av + 1);
+	if (!args)
+		return (ft_exit(NULL, NULL, NULL), 0);
+	joined_args = ft_split(args, ' ');
+	if (!edge_cases(joined_args))
+		return (ft_exit(args, joined_args, NULL), 0);
+	else if (edge_cases(joined_args) == 1)
+		return (0);
+	a = create_stack_a(joined_args);
+	if (is_good(&a) == 1)
+		return (clear_and_exit(args, joined_args, &a), 0);
+	else if (is_good(&a) == 0)
+		return (ft_exit(args, joined_args, &a), 0);
+	ft_auto_sort(ft_lstsize(a), &a, &b);
+	clear_and_exit(args, joined_args, &a);
+}

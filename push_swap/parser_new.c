@@ -12,71 +12,68 @@
 
 #include "push_swap.h"
 
-int	check(char **s)
+int	check(char *s)
 {
-	long	number;
+	int		i;
 
-	number = 0;
-	int (i), (j);
 	i = 0;
 	while (s[i])
 	{
-		j = 0;
-		if ((s[i][j] == '-' || s[i][j] == '+') && (s[i][j + 1] >= '0' && s[i][j
-				+ 1] <= '9'))
-			j++;
-		while (s[i][j])
+		if ((s[i] == '-' || s[i] == '+') || (s[i] >= '0' && s[i] <= '9'))
+			i++;
+		while (s[i])
 		{
-			if (!(s[i][j] >= '0' && s[i][j] <= '9'))
+			if (s[i] < '0' || s[i] > '9')
 				return (0);
-			j++;
+			i++;
 		}
-		number = ft_atoi(s[i]);
+	}
+	return (1);
+}
+
+int	is_args_valid(char **av)
+{
+	int		i;
+	long	number;
+
+	i = 0;
+	number = 0;
+	while (*av)
+	{
+		if (!check(*av))
+			return (0);
+		number = ft_atoi(*av);
 		if (is_overflow(number))
 			return (0);
-		i++;
+		av++;
 	}
 	return (1);
 }
 
-int	is_args_valid(int ac, char **av)
+int	how_many(char **args)
 {
-	char	**number;
-	int		i;
+	char	**joined_args;
+	int		count;
 
-	i = 1;
-	while (i < ac)
+	count = 0 ;
+	joined_args = args;
+	while (*joined_args)
 	{
-		number = ft_split(av[i], ' ');
-		if (!check(number))
-			return (free_arr(number), 0);
-		i++;
-		free_arr(number);
+		if (!check(*joined_args))
+			return (0);
+		joined_args++;
+		count++;
 	}
-	return (1);
+	return (count);
 }
 
-// int	is_args_valid(int ac, char **av, char **num)
-// {
-// 	char	**numbers;
-// 	int		i;
-
-// 	char	(*temp), (*joined_args);
-// 	temp = NULL;
-// 	i = 1;
-// 	joined_args = NULL;
-// 	while (i < ac)
-// 	{
-// 		temp = ft_strjoin(joined_args, av[i]);
-// 		free(joined_args);
-// 		joined_args = ft_strjoin(temp, " ");
-// 		free(temp);
-// 		i++;
-// 	}
-// 	i = 0;
-// 	numbers = ft_split(joined_args, ' ');
-// 	*num = *numbers;
-// 	if (!check(numbers))
-// 		return (0);
-// 	return(1);
-// }
+int	edge_cases(char **args)
+{
+	if (!how_many(args))
+		return (0);
+	if (!is_args_valid(args))
+		return (0);
+	if (how_many(args) == 1)
+		return (1);
+	return (3);
+}

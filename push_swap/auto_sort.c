@@ -17,37 +17,42 @@ void	ft_auto_2(t_stack **stack_a)
 	sa(stack_a);
 }
 
-void	ft_auto_3(t_stack **a, t_stack **b)
+void	ft_auto_3(t_stack **a)
 {
-	pb(a, b);
-	if ((*a)->value > (*a)->next->value)
+	int (f), (s), (t);
+	f = (*a)->value;
+	s = (*a)->next->value;
+	t = (*a)->next->next->value;
+	if (f < s && s < t)
+		return ;
+	else if (f > s && s < t && f < t)
 		sa(a);
-	if ((*a)->value > (*b)->value)
-		pa(a, b);
-	else if ((*a)->next->value < (*b)->value)
+	else if (f < s && s > t && f < t)
 	{
-		pa(a, b);
+		sa(a);
+		ra(a);
+	}
+	else if (f > s && s > t && f > t)
+	{
+		sa(a);
 		rra(a);
 	}
-	else
-	{
-		pa(a, b);
-		sa(a);
-	}
+	else if (f < s && s > t && f > t)
+		rra(a);
+	else if (f > s && s < t && f > t)
+		ra(a);
 }
 
 void	ft_auto_4(t_stack **a, t_stack **b)
 {
-	ft_push_max(a, b);
-	ft_auto_3(a, b);
+	ft_push_min(a, b);
+	ft_auto_3(a);
 	pa(a, b);
-	ra(a);
 }
 
 void	ft_auto_5(t_stack **a, t_stack **b)
 {
-	ft_push_max(a, b);
+	ft_push_min(a, b);
 	ft_auto_4(a, b);
 	pa(a, b);
-	ra(a);
 }

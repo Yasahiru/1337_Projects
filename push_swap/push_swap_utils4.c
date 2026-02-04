@@ -77,6 +77,6 @@ static void	ft_free2(t_stack *lst)
 
 void	ft_lstclear(t_stack **lst)
 {
-	lst = (NULL);
 	ft_free2(*lst);
+	lst = (NULL);
 }

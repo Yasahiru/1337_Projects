@@ -13,7 +13,7 @@
 NAME = push_swap
 
 CC = cc
-CFLAGS = -g -Wall -Wextra -Werror #-fsanitize=address 
+CFLAGS = -Wall -Wextra -Werror -g
 
 SRC = 	push_swap.c parser.c push_swap_utils.c push_swap_utils2.c push_swap_utils3.c \
 		push_swap_utils4.c push_swap_utils5.c push_swap_utils6.c push_swap_utils7.c \
@@ -28,11 +28,12 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 clean : 
-	rm -f $(OBJS) $(OBJS_BONUS)
+	rm -f $(OBJS)
 
 fclean : clean
-	rm -f $(NAME) $(NAME_BONUS)
+	rm -f $(NAME)
 
 re : fclean all
 
 .PHONY: all clean fclean re
+.SECONDARY: $(OBJS)

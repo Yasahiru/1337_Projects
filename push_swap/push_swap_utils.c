@@ -18,9 +18,7 @@ t_stack	*create_stack_a(char **arr)
 	t_stack	*node;
 	t_stack	*head;
 	long	number;
-	int		i;
 
-	i = 0;
 	head = NULL;
 	number = ft_atoi(*arr);
 	head = ft_lstnew(number);
@@ -57,13 +55,6 @@ int	is_repeated(t_stack **a, int number)
 	return (0);
 }
 
-int	is_overflow(long num)
-{
-	if (num > 2147483647 || num < -2147483648)
-		return (1);
-	return (0);
-}
-
 int	second_check(t_stack **a)
 {
 	t_stack	*node;
@@ -78,30 +69,31 @@ int	second_check(t_stack **a)
 	return (1);
 }
 
+char	*join_args(int ac, char **av)
+{
+	int		i;
+	char	*joined_args;
+	char	*temp;
 
-// void    radix_sort(t_stack a, t_stack b)
-// {
-//     int    biggest_nbr;
-//     int    max_bits;
-//     int    i;
-//     int    j;
+	i = 0 ;
+	joined_args = NULL;
+	temp = NULL;
+	while (i < ac - 1)
+	{
+		if (av[i][0] == '\0')
+			return (NULL);
+		temp = ft_strjoin(joined_args, av[i]);
+		free(joined_args);
+		joined_args = ft_strjoin(temp, " ");
+		free(temp);
+		i++;
+	}
+	return (joined_args);
+}
 
-//     biggest_nbr = find_biggest(a);
-//     max_bits = find_bits(biggest_nbr);
-//     i = 0;
-//     while (i < max_bits)
-//     {
-//         j = 0;
-//         while (j <= biggest_nbr)
-//         {
-//             if (((a)->index >> i) & 1)
-//                 ra (a);
-//             else
-//                 pb(a, b);
-//             j++;
-//         }
-//         while (*b)
-//             pa(a, b);
-//         i++;
-//     }
-// }
+int	is_overflow(long num)
+{
+	if (num > INT_MAX || num < INT_MIN)
+		return (1);
+	return (0);
+}

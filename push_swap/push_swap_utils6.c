@@ -14,7 +14,9 @@
 
 int	ft_is_sorted(t_stack **a)
 {
-	t_stack	(*node), (*next);
+	t_stack	*node;
+	t_stack	*next;
+
 	node = *a;
 	next = node->next;
 	while (next)

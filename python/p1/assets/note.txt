@@ -1,0 +1,6 @@
+hows python runs and compiled
+what is => if __name__ == "__main__" used for.
+how does:  {print, int, input} works.
+
+OOP: 
+    self, __init__ , class attribute
